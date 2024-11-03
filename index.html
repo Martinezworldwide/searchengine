@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Engine Iframe</title>
+  <title>Search Engine Redirect</title>
   <style>
-    /* Basic styling for buttons */
+    /* Style for the search form */
+    .search-form {
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .search-input {
+      margin: 5px;
+      padding: 8px;
+      font-size: 1rem;
+      width: 300px;
+    }
+
     .search-button {
       margin: 10px;
       padding: 10px;
@@ -13,62 +27,56 @@
       cursor: pointer;
     }
 
-    /* Modal styling */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Iframe container inside the modal */
-    .iframe-container {
-      width: 80%;
-      height: 80%;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-    }
-
-    .iframe-container iframe {
-      width: 100%;
-      height: 100%;
+    .engine-button {
+      background-color: #4CAF50;
+      color: white;
       border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 5px;
+    }
+
+    .engine-button:hover {
+      background-color: #45a049;
     }
   </style>
 </head>
 <body>
 
-  <!-- Buttons to open modals -->
-  <button class="search-button" onclick="openModal('https://www.google.com')">Google</button>
-  <button class="search-button" onclick="openModal('https://www.bing.com')">Bing</button>
-
-  <!-- Modal structure -->
-  <div class="modal" id="modal">
-    <div class="iframe-container">
-      <iframe id="searchIframe" src=""></iframe>
+  <!-- Search form -->
+  <div class="search-form">
+    <h2>Search the Web</h2>
+    <input type="text" id="query" class="search-input" placeholder="Enter search query">
+    <div>
+      <button class="engine-button" onclick="searchEngine('google')">Google</button>
+      <button class="engine-button" onclick="searchEngine('bing')">Bing</button>
+      <!-- Add more buttons here for additional search engines if desired -->
     </div>
   </div>
 
   <script>
-    // Function to open the modal with the iframe
-    function openModal(url) {
-      document.getElementById('searchIframe').src = url;
-      document.getElementById('modal').style.display = 'flex';
-    }
-
-    // Close the modal when clicking outside the iframe container
-    window.onclick = function(event) {
-      const modal = document.getElementById('modal');
-      if (event.target === modal) {
-        modal.style.display = 'none';
-        document.getElementById('searchIframe').src = ''; // Clear src
+    // Function to handle search
+    function searchEngine(engine) {
+      const query = document.getElementById('query').value;
+      if (!query) {
+        alert("Please enter a search query.");
+        return;
       }
+
+      let url;
+      switch (engine) {
+        case 'google':
+          url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+          break;
+        case 'bing':
+          url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
+          break;
+        // Add cases for more search engines here if needed
+      }
+
+      // Open the search in a new tab
+      window.open(url, '_blank');
     }
   </script>
 
