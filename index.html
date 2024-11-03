@@ -73,6 +73,11 @@
           url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
           break;
         // Add cases for more search engines here if needed
+
+case 'duckduckgo':
+  url = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
+  break;
+
       }
 
       // Open the search in a new tab
