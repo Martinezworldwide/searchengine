@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Engine Redirect</title>
+  <title>Multi Search Engine Redirect</title>
   <style>
-    /* Style for the search form */
     .search-form {
       margin: 20px;
       display: flex;
@@ -18,13 +17,6 @@
       padding: 8px;
       font-size: 1rem;
       width: 300px;
-    }
-
-    .search-button {
-      margin: 10px;
-      padding: 10px;
-      font-size: 1rem;
-      cursor: pointer;
     }
 
     .engine-button {
@@ -51,12 +43,21 @@
     <div>
       <button class="engine-button" onclick="searchEngine('google')">Google</button>
       <button class="engine-button" onclick="searchEngine('bing')">Bing</button>
-      <!-- Add more buttons here for additional search engines if desired -->
+      <button class="engine-button" onclick="searchEngine('duckduckgo')">DuckDuckGo</button>
+      <button class="engine-button" onclick="searchEngine('yahoo')">Yahoo</button>
+      <button class="engine-button" onclick="searchEngine('ecosia')">Ecosia</button>
+      <button class="engine-button" onclick="searchEngine('startpage')">Startpage</button>
+      <button class="engine-button" onclick="searchEngine('yandex')">Yandex</button>
+      <button class="engine-button" onclick="searchEngine('baidu')">Baidu</button>
+      <button class="engine-button" onclick="searchEngine('qwant')">Qwant</button>
+      <button class="engine-button" onclick="searchEngine('swisscows')">Swisscows</button>
+      <button class="engine-button" onclick="searchEngine('wolframalpha')">Wolfram Alpha</button>
+      <button class="engine-button" onclick="searchEngine('gigablast')">Gigablast</button>
     </div>
   </div>
 
   <script>
-    // Function to handle search
+    // Function to handle search with different engines
     function searchEngine(engine) {
       const query = document.getElementById('query').value;
       if (!query) {
@@ -72,12 +73,37 @@
         case 'bing':
           url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
           break;
-        // Add cases for more search engines here if needed
-
-case 'duckduckgo':
-  url = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
-  break;
-
+        case 'duckduckgo':
+          url = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
+          break;
+        case 'yahoo':
+          url = `https://search.yahoo.com/search?p=${encodeURIComponent(query)}`;
+          break;
+        case 'ecosia':
+          url = `https://www.ecosia.org/search?q=${encodeURIComponent(query)}`;
+          break;
+        case 'startpage':
+          url = `https://www.startpage.com/do/dsearch?query=${encodeURIComponent(query)}`;
+          break;
+        case 'yandex':
+          url = `https://yandex.com/search/?text=${encodeURIComponent(query)}`;
+          break;
+        case 'baidu':
+          url = `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
+          break;
+        case 'qwant':
+          url = `https://www.qwant.com/?q=${encodeURIComponent(query)}`;
+          break;
+        case 'swisscows':
+          url = `https://swisscows.com/web?query=${encodeURIComponent(query)}`;
+          break;
+        case 'wolframalpha':
+          url = `https://www.wolframalpha.com/input/?i=${encodeURIComponent(query)}`;
+          break;
+        case 'gigablast':
+          url = `https://www.gigablast.com/search?q=${encodeURIComponent(query)}`;
+          break;
+        // Add more cases as needed for additional engines
       }
 
       // Open the search in a new tab
