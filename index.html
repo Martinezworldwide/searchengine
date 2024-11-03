@@ -52,8 +52,13 @@
       <button class="engine-button" onclick="searchEngine('qwant')">Qwant</button>
       <button class="engine-button" onclick="searchEngine('swisscows')">Swisscows</button>
       <button class="engine-button" onclick="searchEngine('wolframalpha')">Wolfram Alpha</button>
-      <button class="engine-button" onclick="searchEngine('gigablast')">Gigablast</button>
-    </div>
+      <button class="engine-button" onclick="searchEngine('gigablast')">//Gigablast</button>
+    <button class="engine-button" onclick="searchEngine('ask')">Ask</button>
+<button class="engine-button" onclick="searchEngine('brave')">Brave</button>
+<button class="engine-button" onclick="searchEngine('mojeek')">Mojeek</button>
+<button class="engine-button" onclick="searchEngine('searchencrypt')">Search Encrypt</button>
+
+</div>
   </div>
 
   <script>
@@ -103,6 +108,20 @@
         case 'gigablast':
           url = `https://www.gigablast.com/search?q=${encodeURIComponent(query)}`;
           break;
+case 'ask':
+  url = `https://www.ask.com/web?q=${encodeURIComponent(query)}`;
+  break;
+case 'brave':
+  url = `https://search.brave.com/search?q=${encodeURIComponent(query)}`;
+  break;
+case 'mojeek':
+  url = `https://www.mojeek.com/search?q=${encodeURIComponent(query)}`;
+  break;
+case 'searchencrypt':
+  url = `https://www.searchencrypt.com/search?q=${encodeURIComponent(query)}`;
+  break;
+
+
         // Add more cases as needed for additional engines
       }
 
